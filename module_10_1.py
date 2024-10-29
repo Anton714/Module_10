@@ -10,7 +10,7 @@ def write_words(word_count, file_name):
     print(f'Завершилась запись в файл {file_name}')
 
 
-def timing(func):
+def time_dec(func):
     def wrapper(*args, **kwargs):
         started_at = time()
         func(*args, **kwargs)
@@ -21,7 +21,7 @@ def timing(func):
     return wrapper
 
 
-@timing
+@time_dec
 def start_func():
     write_words(10, 'example1.txt')
     write_words(30, 'example2.txt')
@@ -29,7 +29,7 @@ def start_func():
     write_words(100, 'example4.txt')
 
 
-@timing
+@time_dec
 def start_thread():
     thread_1 = Thread(target=write_words, args=(10, 'example5.txt'))
     thread_2 = Thread(target=write_words, args=(30, 'example6.txt'))
